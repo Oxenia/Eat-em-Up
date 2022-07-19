@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class BallBehavoir : MonoBehaviour
 {
-    [SerializeField] private float ballSpeed;
-    [SerializeField] private float zBoundRange = 70;
-    [SerializeField] private float xBoundRange = 135;
-    private Rigidbody ballRB;
+    [SerializeField] private float ballSpeed; // ENCAPSULATION
+    private float zBoundRange = 70; // ENCAPSULATION
+    private float xBoundRange = 135; // ENCAPSULATION
+    private Rigidbody ballRB; // ENCAPSULATION
     public SpawnManager spawnMangerScript;
 
     public void Start()
@@ -23,7 +23,7 @@ public class BallBehavoir : MonoBehaviour
         DestroyOutOfBounds();
     }
 
-    public void SelectDirection(string direction)
+    public void SelectDirection(string direction) // ABSTRACTION
     {
         if (direction == "left")
         {
@@ -43,7 +43,7 @@ public class BallBehavoir : MonoBehaviour
         }
     }
 
-    public void DestroyOutOfBounds()
+    public void DestroyOutOfBounds() // ABSTRACTION
     {
         if (transform.position.x > xBoundRange || transform.position.x < -xBoundRange || transform.position.z > zBoundRange || transform.position.z < -zBoundRange )
         {

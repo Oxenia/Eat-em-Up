@@ -6,18 +6,18 @@ public class SpawnManager : MonoBehaviour
 {
     public string movementDirection;
 
-    [SerializeField] private GameObject[] allPoints;
+    [SerializeField] private GameObject[] allPoints; // ENCAPSULATION
 
-    [SerializeField] private float ySpawn;
+    [SerializeField] private float ySpawn; // ENCAPSULATION
 
-    [SerializeField] private float zLeftRightSpawnRange;
-    [SerializeField] private float xLeftRightSpawn;
+    [SerializeField] private float zLeftRightSpawnRange; // ENCAPSULATION
+    [SerializeField] private float xLeftRightSpawn; // ENCAPSULATION
 
-    [SerializeField] private float xTopButtomSpawnRange;
-    [SerializeField] private float zTopButtomSpawn;
+    [SerializeField] private float xTopButtomSpawnRange; // ENCAPSULATION
+    [SerializeField] private float zTopButtomSpawn; // ENCAPSULATION
 
-    [SerializeField] private float spawnTime;
-    [SerializeField] private float spawnRate;
+    [SerializeField] private float spawnTime; // ENCAPSULATION
+    [SerializeField] private float spawnRate; // ENCAPSULATION
 
     private void Start()
     {
@@ -25,7 +25,7 @@ public class SpawnManager : MonoBehaviour
         InvokeRepeating("SpawnOnDirection", spawnTime, spawnRate);
     }
 
-    public void SpawnOnDirection()
+    public void SpawnOnDirection() // ABSTRACTION
     {
         if (movementDirection == "left")
         {
@@ -45,7 +45,7 @@ public class SpawnManager : MonoBehaviour
         }
     }
 
-    private void RandomSpawnFromRight()
+    private void RandomSpawnFromRight() // ABSTRACTION
     {
         float randomZ = Random.Range(zLeftRightSpawnRange, -zLeftRightSpawnRange);
         Vector3 randomPos = new Vector3(xLeftRightSpawn, ySpawn, randomZ);
@@ -53,7 +53,7 @@ public class SpawnManager : MonoBehaviour
         Instantiate(allPoints[randomIndex], randomPos, allPoints[randomIndex].gameObject.transform.rotation);
     }
 
-    private void RandomSpawnFromLeft()
+    private void RandomSpawnFromLeft() // ABSTRACTION
     {
         float randomZ = Random.Range(zLeftRightSpawnRange, -zLeftRightSpawnRange);
         Vector3 randomPos = new Vector3(-xLeftRightSpawn, ySpawn, randomZ);
@@ -61,7 +61,7 @@ public class SpawnManager : MonoBehaviour
         Instantiate(allPoints[randomIndex], randomPos, allPoints[randomIndex].gameObject.transform.rotation);
     }
 
-    private void RandomSpawnFromTop()
+    private void RandomSpawnFromTop() // ABSTRACTION
     {
         float randomX = Random.Range(xTopButtomSpawnRange, -xTopButtomSpawnRange);
         Vector3 randomPos = new Vector3(randomX, ySpawn, zTopButtomSpawn);
@@ -69,7 +69,7 @@ public class SpawnManager : MonoBehaviour
         Instantiate(allPoints[randomIndex], randomPos, allPoints[randomIndex].gameObject.transform.rotation);
     }
 
-    private void RandomSpawnFromBottom()
+    private void RandomSpawnFromBottom() // ABSTRACTION
     {
         float randomX = Random.Range(xTopButtomSpawnRange, -xTopButtomSpawnRange);
         Vector3 randomPos = new Vector3(randomX, ySpawn, -zTopButtomSpawn);
